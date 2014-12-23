@@ -1,0 +1,12 @@
+﻿<script type="text/template" class="template">
+    <ul id="filters" class="option-set" data-option-key="filter">
+        <li class="type-work"><%= model.key %></li>
+        <li><a href="#filter" data-option-value="*" class="selected">Tous</a></li>
+        <%  _.each(model.values, function(item){ %>
+        <li><a href="#filter" data-option-value=".<%= item.key %>"><%= item.key %></a></li>
+        <% }); %>
+        
+        
+        
+    </ul>
+</script>

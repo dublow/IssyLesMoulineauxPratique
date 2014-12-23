@@ -14,7 +14,8 @@
                 }
             }
             console.log(all);
-            templatize({ model: all });
+            templatize('catViePratique', { model: all[0] });
+            templatize('catEntreprise', { model: all[1] });
         });
     };
 
@@ -35,9 +36,9 @@
         }).ToArray();
     };
 
-    var templatize = function(model) {
-        $.get('/Javascripts/Templates/app.html', function (result) {
-            $('#content').append(_.template($(result).html())(model));
+    var templatize = function(containerClass, model) {
+        $.get('/Javascripts/Templates/categories.html', function (result) {
+            $('.' + containerClass).append(_.template($(result).html())(model));
         });
     };
 
