@@ -1,1 +1,34 @@
-﻿
+﻿.overlay-description {
+    position: absolute;
+    top: 10%;
+    /* left: 50%; */
+    margin: 0px 24px 0 24px;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.customHTML {
+     position: absolute; 
+     z-index: 99999; /* this place the content over the fancybox */
+     bottom: 0px;
+     right: 0;
+     width: 100%;
+     height: 100%;
+     display: block;
+}
+
+.itemTable {
+    overflow:auto;
+    margin-left: 0 !important;
+    width: 100%;
+    height: 100%;
+}
+
+    .itemTable table {
+        width: 81.4%;
+        margin: auto;
+    }
+        .itemTable table tr {
+            cursor: pointer;
+        }

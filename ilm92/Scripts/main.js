@@ -1,7 +1,8 @@
 jQuery(function($){
 
 var CHAKRA = window.CHAKRA || {};
-
+CHAKRA.models = [];
+CHAKRA.modelsFiltered = {};
 /* ==================================================
    Mobile Navigation
 ================================================== */
@@ -77,10 +78,10 @@ CHAKRA.slider = function(){
 		thumb_links				:	0,			// Individual thumb links for each slide
 		thumbnail_navigation    :   0,			// Thumbnail navigation
 		slides 					:  	[			// Slideshow Images
-											{image : 'Images/slider-images/image01.jpg', title : '<div class="slide-content">Chakra</div>', thumb : '', url : ''},
-											{image : 'Images/slider-images/image02.jpg', title : '<div class="slide-content">Responsive Design</div>', thumb : '', url : ''},
-											{image : 'Images/slider-images/image03.jpg', title : '<div class="slide-content">FullScreen Gallery</div>', thumb : '', url : ''},
-											{image : 'Images/slider-images/image04.jpg', title : '<div class="slide-content">Showcase Your Work</div>', thumb : '', url : ''}  
+											{ image: 'Images/slider-images/image01.jpg', title: '<div class="slide-content">Points d&#39;int&#233;r&#234;t de la ville d&#39;Issy-les-Moulineaux</div>', thumb: '', url: '' },
+											{ image: 'Images/slider-images/image02.jpg', title: '<div class="slide-content">Points d&#39;int&#233;r&#234;t de la ville d&#39;Issy-les-Moulineaux</div>', thumb: '', url: '' },
+											{ image: 'Images/slider-images/image03.jpg', title: '<div class="slide-content">Points d&#39;int&#233;r&#234;t de la ville d&#39;Issy-les-Moulineaux</div>', thumb: '', url: '' },
+											{ image: 'Images/slider-images/image04.jpg', title: '<div class="slide-content">Points d&#39;int&#233;r&#234;t de la ville d&#39;Issy-les-Moulineaux</div>', thumb: '', url: '' }
 									],
 									
 		// Theme Options			   
@@ -105,9 +106,9 @@ CHAKRA.nav = function(){
    Filter Works
 ================================================== */
 
-CHAKRA.filter = function (){
-	if($('#projects').length > 0){		
-		var $container = $('#projects');
+CHAKRA.filter = function (containerId){
+    if ($('#' + containerId).length > 0) {
+        var $container = $('#' + containerId);
 		
 		$container.imagesLoaded(function() {
 			$container.isotope({
@@ -157,41 +158,89 @@ CHAKRA.filter = function (){
 /* ==================================================
    FancyBox
 ================================================== */
+var filterModel = function (cat, filter) {
+    if (CHAKRA.modelsFiltered[cat] && CHAKRA.modelsFiltered[cat].length > 0)
+        return CHAKRA.modelsFiltered[cat];
+    else {
+        var catSplitted = cat.split('_');
+        var e = Enumerable
+                    .From(CHAKRA.models)
+                    .Where(function (x) { return x.root === catSplitted[0] })
+                    .Select(function (x) {
+                        return Enumerable
+                                    .From(x.model.values)
+                                    .Where(function (y) { return y.key === catSplitted[1]; })
+                                    .Select(function (z) {
+                                        return Enumerable
+                                                    .From(z.values)
+                                                    .Where(function (z) { return z.key === catSplitted[2]; })
+                                                    .Select(function (z) { return z.values; })
+                                                    
+                                                    .SingleOrDefault();
+                                    })
+                                    
+                                    .ToArray();
+                    })
+                    .SingleOrDefault()
 
-CHAKRA.fancyBox = function(){
-	if($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0){
-		
-		$(".fancybox").fancybox({				
-			padding : 0,
-			beforeShow: function () {
-				this.title = $(this.element).attr('title');
-				this.title = '<h4>' + this.title + '</h4>' + '<p>' + $(this.element).parent().find('img').attr('alt') + '</p>';
-			},
-			helpers : {
-				title : { type: 'inside' },
-			}
-		});
-			
-		$('.fancybox-media').fancybox({
-			openEffect  : 'none',
-			closeEffect : 'none',
-			helpers : {
-				media : {}
-			}
-		});
-		
-		$(".fancybox-various").fancybox({
-			maxWidth	: 800,
-			maxHeight	: 600,
-			fitToView	: false,
-			width		: '70%',
-			height		: '70%',
-			autoSize	: false,
-			closeClick	: false,
-			openEffect	: 'none',
-			closeEffect	: 'none'
-		});
-	}
+        return CHAKRA.modelsFiltered[cat] = Enumerable.From(e[0])
+                                                        .OrderBy(function (o) { return o.titre; })
+                                                        .ToArray();
+    }
+}
+CHAKRA.fancyBox = function (model) {
+    
+    if ($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0) {
+        CHAKRA.models.push(model);
+        $(".fancybox").fancybox({
+            padding: 0,
+            beforeShow: function () {
+                $(".fancybox-inner").css({width: '80%'});
+                $('.fancybox-image').hide();
+                this.title = $(this.element).attr('title');
+                this.title = '<h4>' + this.title + '</h4>' + '<p>' + $(this.element).parent().find('img').attr('alt') + '</p>';
+                this.cat = $(this.element).data('cat');
+            },
+            afterLoad: function () {
+                $.extend(this, {
+                    width: '100%',
+                });
+            },
+            afterShow: function () {
+                var cat = this.cat;
+                
+                $.get('/Javascripts/Templates/itemTable.html', function (result) {
+                    $('.fancybox-inner').append(_.template($(result).html())({ model: filterModel(cat) }));
+                    $('.fancybox-image').hide();
+                });
+                
+                
+            },
+            helpers: {
+                title: { type: 'inside' },
+            }
+        });
+
+        $('.fancybox-media').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none',
+            helpers: {
+                media: {}
+            }
+        });
+
+        //$(".fancybox-various").fancybox({
+        //    maxWidth	: 800,
+        //    maxHeight	: 600,
+        //    fitToView	: false,
+        //    width		: '80%',
+        //    height		: '70%',
+        //    autoSize	: false,
+        //    closeClick	: false,
+        //    openEffect	: 'none',
+        //    closeEffect	: 'none'
+        //});
+    }
 }
 
 
@@ -517,8 +566,8 @@ $(document).ready(function(){
 	CHAKRA.menu();
 	CHAKRA.goSection();
 	CHAKRA.goUp();
-	CHAKRA.filter();
-	CHAKRA.fancyBox();
+	//CHAKRA.filter();
+	//CHAKRA.fancyBox();
 	CHAKRA.contactForm();
 	//CHAKRA.tweetFeed();
 	CHAKRA.scrollToTop();
@@ -533,4 +582,5 @@ $(window).resize(function(){
 	CHAKRA.mobileNav();
 });
 
+window.CHAKRA = CHAKRA;
 });

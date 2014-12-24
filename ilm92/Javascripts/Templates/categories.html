@@ -1,12 +1,41 @@
 ﻿<script type="text/template" class="template">
-    <ul id="filters" class="option-set" data-option-key="filter">
-        <li class="type-work"><%= model.key %></li>
-        <li><a href="#filter" data-option-value="*" class="selected">Tous</a></li>
-        <%  _.each(model.values, function(item){ %>
-        <li><a href="#filter" data-option-value=".<%= item.key %>"><%= item.key %></a></li>
-        <% }); %>
-        
-        
-        
-    </ul>
+    <div class="row">
+        <div class="span12">
+            <!-- Filter -->
+            <nav id="options" class="work-nav">
+                <ul id="filters" class="option-set" data-option-key="filter">
+                    <li class="type-work"><%= model.key %></li>
+                    <li><a href="#filter" data-option-value="*" class="selected">Tous</a></li>
+                    <%  _.each(model.values, function(item, index){ %>
+                    <li><a href="#filter" data-option-value=".cat_<%= root %>_<%= index %>"><%= item.key %></a></li>
+                    <% }); %>
+                </ul>
+            </nav>
+            <!-- End Filter -->
+        </div>
+
+        <div class="span12">
+            <div class="row">
+                <section id="<%= root %>" class="isotope" style="position: relative; overflow: hidden; height: 657px;">
+                    <ul id="thumbs">
+                        <%
+                        _.each(model.values, function(item, index){
+                        _.each(item.values, function(subitem, subindex){%>
+                        <!-- Item Project and Filter Name -->
+                        <li class="item-thumbs span3 cat_<%= root %>_<%= index %> isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                            <span class="overlay-description"><%= subitem.key %></span>
+                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" data-cat="<%= root %>_<%= item.key %>_<%= subitem.key %>" title="<%= subitem.values.length %> <%= subitem.key %>" href="Images/cat_3.jpg">
+                                <span class="overlay-img"></span>
+                                <span class="overlay-img-thumb font-icon-search"></span>
+                            </a>
+                            <!-- Thumb Image and Description -->
+                            <img src="Images/cat_<%= index %>.jpg" alt="">
+                        </li>
+                        <% }); }); %>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </div>
 </script>

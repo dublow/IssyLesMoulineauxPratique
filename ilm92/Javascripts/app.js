@@ -14,8 +14,9 @@
                 }
             }
             console.log(all);
-            templatize('catViePratique', { model: all[0] });
-            templatize('catEntreprise', { model: all[1] });
+            templatize('catviepratique', { model: all[0], root: 'vp' });
+            templatize('catentreprise', { model: all[1], root: 'e' });
+            
         });
     };
 
@@ -31,14 +32,23 @@
                     values: values.source
                 };
             } else {
-                return values.source;
+                return {
+                    key: 'Non catégorisé',
+                    values: values.source
+                } ;
             }
-        }).ToArray();
+        })
+        .OrderBy(function (x) {
+            return x.key;
+        })
+        .ToArray();
     };
 
-    var templatize = function(containerClass, model) {
+    var templatize = function(containerId, model) {
         $.get('/Javascripts/Templates/categories.html', function (result) {
-            $('.' + containerClass).append(_.template($(result).html())(model));
+            $('#' + containerId).append(_.template($(result).html())(model));
+            CHAKRA.filter(model.root);
+            CHAKRA.fancyBox(model);
         });
     };
 
