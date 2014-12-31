@@ -148,16 +148,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\custom.css" />
-    <Content Include="Content\fonts.css" />
-    <Content Include="Content\jquery.fancybox.css" />
-    <Content Include="Content\responsive.css" />
-    <Content Include="Content\shortcodes.css" />
-    <Content Include="Content\supersized.shutter.css" />
-    <Content Include="Content\supersized.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -192,7 +184,6 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Images\cat_0.jpg" />
     <Content Include="Images\cat_1.jpg" />
     <Content Include="Images\cat_10.jpg" />
@@ -208,7 +199,6 @@
     <Content Include="Images\cat_7.jpg" />
     <Content Include="Images\cat_8.jpg" />
     <Content Include="Images\cat_9.jpg" />
-    <Content Include="Content\fancybox_overlay.png" />
     <Content Include="Images\filter-icon.png" />
     <Content Include="Images\image-01-full.jpg" />
     <Content Include="Images\image-01_old.jpg" />
@@ -237,8 +227,12 @@
     <Content Include="Images\slider-images\image03.jpg" />
     <Content Include="Images\slider-images\image04.jpg" />
     <Content Include="Javascripts\app.js" />
-    <Content Include="Javascripts\Templates\itemTable.html" />
-    <Content Include="Javascripts\Templates\categories.html" />
+    <Content Include="Javascripts\collections\category.js" />
+    <Content Include="Javascripts\common.js" />
+    <Content Include="Javascripts\models\interet.js" />
+    <Content Include="Javascripts\templates\interet.html" />
+    <Content Include="Javascripts\views\category.js" />
+    <Content Include="Javascripts\views\interet.js" />
     <Content Include="Jsons\ilm92.json" />
     <Content Include="Content\fonts\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
     <Content Include="Content\fonts\DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2" />
@@ -246,6 +240,7 @@
     <Content Include="Content\fonts\k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2" />
     <Content Include="Content\fonts\PRmiXeptR36kaC0GEAetxko2lTMeWA_kmIyWrkNCwPc.woff2" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
@@ -253,10 +248,6 @@
     <Content Include="Scripts\jquery-ui-1.11.2.js" />
     <Content Include="Scripts\jquery-ui-1.11.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.fancybox-media.js" />
-    <Content Include="Scripts\jquery.fancybox.pack.js" />
-    <Content Include="Scripts\jquery.isotope.js" />
-    <Content Include="Scripts\jquery.tweet.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -272,12 +263,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\placeholder.js" />
-    <Content Include="Scripts\plugins.js" />
-    <Content Include="Scripts\supersized.3.2.7.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
-    <Content Include="Scripts\waypoints-sticky.js" />
-    <Content Include="Scripts\waypoints.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

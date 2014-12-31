@@ -20,39 +20,26 @@ namespace ilm92
 
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
                         "~/Scripts/underscore.js",
-                        "~/Scripts/linq.js",
-                        "~/Scripts/bootstrap.min.js",
-                        "~/Scripts/supersized.3.2.7.min.js",
-                        "~/Scripts/waypoints.js",
-                        "~/Scripts/waypoints-sticky.js",
-                        "~/Scripts/jquery.isotope.js",
-                        "~/Scripts/jquery.fancybox.pack.js",
-                        "~/Scripts/jquery.fancybox-media.js",
-                        "~/Scripts/jquery.tweet.js",
-                        "~/Scripts/jquery.tweet.js",
-                        "~/Scripts/plugins.js",
-                        "~/Scripts/main.js",
+                        "~/Scripts/backbone.js",
+                        "~/Scripts/bootstrap.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/page").Include(
+                        "~/Javascripts/models/interet.js",
+                        "~/Javascripts/collections/category.js",
+                        "~/Javascripts/views/interet.js",
+                        "~/Javascripts/views/category.js",
+                        "~/Javascripts/common.js",
                         "~/Javascripts/app.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/placeholder.js",
                         "~/Scripts/modernizr.js"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.min.css",
-                        "~/Content/bootstrap-theme.min.css",
-                        "~/Content/site.css",
-                        "~/Content/supersized.css",
-                        "~/Content/supersized.shutter.css",
-                        "~/Content/jquery.fancybox.css",
-                        "~/Content/fonts.css",
-                        "~/Content/shortcodes.css",
-                        "~/Content/bootstrap-responsive.min.css",
-                        "~/Content/responsive.css",
-                        "~/Content/custom.css"
+                        "~/Content/bootstrap-theme.min.css"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
