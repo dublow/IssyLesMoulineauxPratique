@@ -1,3 +1,23 @@
 ﻿<script id="interetTemplate" type="text/template">
-    
+    <% 
+        var iterator = function(obj, hasChilds){            
+            var tpl = '';
+            var className = '';
+            _.each(obj, function(item){
+                className = item.hasChildCategories ? 'noExpand' : 'expand';
+
+                tpl += '<ul><li class="' + className + '">' + item.key + '</li>';
+                if(item.hasChildCategories){
+                    tpl += iterator(item.values, item.hasChildCategories) + '</ul>';
+                }
+                else
+                    tpl += '</ul>';
+            });
+            return tpl;
+        };
+    %>
+    <ul>
+        <li><%= key %></li>
+        <%= iterator(values, hasChildCategories) %>
+    </ul>
 </script>

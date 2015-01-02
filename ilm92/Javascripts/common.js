@@ -2,9 +2,9 @@
 
 app.loadTemplate = function(templateName, callback) {
     call({
-        url: '/Javascripts/templates' + templateName,
+        url: '/Javascripts/templates/' + templateName,
         type: 'GET',
-        dataType: 'JSON',
+        dataType: 'html',
         async: false
     }, callback);
 };
