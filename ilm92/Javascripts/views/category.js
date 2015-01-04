@@ -10,7 +10,7 @@ var grouper = {
 };
 
 app.CategoryView = Backbone.View.extend({
-    el: '#category',
+    el: '.sidebar-collapse',
     
     initialize: function (initialCategory) {
         var gp = this.groupCat(initialCategory).result;
@@ -19,14 +19,15 @@ app.CategoryView = Backbone.View.extend({
     },
     
     render: function() {
-        this.collection.each(function (item) {
-            this.renderInteret(item);
+        this.collection.each(function (item, index) {
+            this.renderInteret(item, index);
         }, this);
     },
     
-    renderInteret: function(item) {
+    renderInteret: function(item, index) {
         var interetView = new app.InteretView({
-            model: item
+            model: item,
+            className: 'menu nav m' + index
         });
 
         this.$el.append(interetView.render().el);

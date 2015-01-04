@@ -1,23 +1,36 @@
 ﻿<script id="interetTemplate" type="text/template">
     <% 
+        var transformDeep = {'2': 'nav-second-level', '3': 'nav-third-level', '4': 'nav-fourth-level'}
+        var deep = 2;
         var iterator = function(obj, hasChilds){            
-            var tpl = '';
+            var tpl = hasChilds ? '<ul class="nav ' + transformDeep[deep] +'">' : '';
             var className = '';
+            var plusTime = '';
             _.each(obj, function(item){
                 className = item.hasChildCategories ? 'noExpand' : 'expand';
-
-                tpl += '<ul><li class="' + className + '">' + item.key + '</li>';
+                plusTime = item.hasChildCategories ? '<span class="fa plus-times"></span>' : '';
+                tpl += '<li class="' + className + '" data-deep="' + deep + '"><a href="#">' + item.key + plusTime + '</a>';
                 if(item.hasChildCategories){
-                    tpl += iterator(item.values, item.hasChildCategories) + '</ul>';
+                    deep++;
+                    tpl += iterator(item.values, item.hasChildCategories);
+                    deep--;
+                    tpl += '</ul>'; 
                 }
-                else
-                    tpl += '</ul>';
+                else{
+                    
+                    tpl += '</li>';
+                }
             });
             return tpl;
         };
     %>
-    <ul>
-        <li><%= key %></li>
+
+    <li>
+        <a href="#">
+            <span class="sidebar-nav-item"><%= key %></span>
+            <span class="fa arrow"></span>
+        </a>
         <%= iterator(values, hasChildCategories) %>
-    </ul>
+    </li>
+
 </script>

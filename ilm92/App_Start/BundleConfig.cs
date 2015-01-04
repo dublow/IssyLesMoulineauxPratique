@@ -21,7 +21,7 @@ namespace ilm92
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
                         "~/Scripts/underscore.js",
                         "~/Scripts/backbone.js",
-                        "~/Scripts/bootstrap.min.js"));
+                        "~/Scripts/metismenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
                         "~/Javascripts/models/interet.js",
@@ -39,8 +39,8 @@ namespace ilm92
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.min.css",
-                        "~/Content/bootstrap-theme.min.css"
+                        "~/Content/metisMenu.css",
+                        "~/Content/site.css"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

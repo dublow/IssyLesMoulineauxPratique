@@ -149,7 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\metisMenu.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -260,6 +262,7 @@
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\metismenu.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\placeholder.js" />

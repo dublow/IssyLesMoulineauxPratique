@@ -1,0 +1,82 @@
+﻿body {
+    background-color:#2f4050;
+}
+#main {
+    width: 100%;
+    overflow-x: hidden;
+    margin-top: -1px;
+}
+.navbar-default {
+    background-color: transparent;
+    border-color: #2f4050;
+    background-image:none;
+}
+.navbar-static-side {
+    z-index: 100;
+    position: absolute;
+    width: 220px;
+}
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav > li > a {
+    color: #a7b1c2;
+    font-weight: 400;
+    padding: 14px 20px 14px 25px;
+}
+.nav > li.active {
+    border-left: 4px solid #19aa8d;
+    background: #293846;
+}
+
+.nav > li.active > a {
+    color: #ffffff;
+}
+
+.navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus {
+    background-color: #293846;
+    color: white;
+}
+
+.nav.nav-second-level > li.active {
+  border: none;
+}
+.nav.nav-second-level.collapse[style] {
+  height: auto !important;
+}
+.nav-second-level li,
+.nav-third-level li {
+  border-bottom: none !important;
+}
+.nav-second-level li a {
+  padding: 7px 10px 7px 5px;
+  padding-left: 32px;
+}
+.nav-third-level li a {
+  padding-left: 42px;
+}
+.nav-fourth-level li a {
+  padding-left: 52px;
+}
+.nav-second-level li:last-child {
+  margin-bottom: 10px;
+}
+
+#page-wrapper {
+    position: inherit;
+    margin: 0 0 0 220px;
+    min-height: 1200px;
+    background-color: #f3f3f4;
+    padding: 0 20px;
+    position: relative !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e7eaec !important;
+}
+
+

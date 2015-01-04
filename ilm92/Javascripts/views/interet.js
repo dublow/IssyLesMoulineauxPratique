@@ -2,8 +2,7 @@
 
 
 app.InteretView = Backbone.View.extend({
-    tagName: 'div',
-    className: 'interetContainer',
+    tagName: 'ul',
     events: {        
         'click .expand': 'detail'
     },
@@ -25,7 +24,11 @@ app.InteretView = Backbone.View.extend({
     },
     
     detail: function (evt) {
-        var t =  _.map(this.model.attributes.values, this.recursiveFilter, { recursiveFilter: this.recursiveFilter, currentTarget: evt.currentTarget })[0];
+        var filter = evt.currentTarget.innerText;
+        var deep = $(evt.currentTarget).data('deep');
+        var result = _.filter(app.baseModel, function (item) {
+            return item.fields['categorie' + deep] === filter;
+        });
         
     },
     
