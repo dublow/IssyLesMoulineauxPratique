@@ -25,10 +25,14 @@ namespace ilm92
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
                         "~/Javascripts/models/interet.js",
+                        "~/Javascripts/models/detail.js",
                         "~/Javascripts/collections/category.js",
+                        "~/Javascripts/collections/Items.js",
                         "~/Javascripts/views/interetItem.js",
                         "~/Javascripts/views/interet.js",
                         "~/Javascripts/views/category.js",
+                        "~/Javascripts/views/items.js",
+                        "~/Javascripts/views/description.js",
                         "~/Javascripts/common.js",
                         "~/Javascripts/app.js"));
 

@@ -1,5 +1,10 @@
-﻿body {
+﻿@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en");
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+}
+body {
     background-color:#2f4050;
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #main {
     width: 100%;
@@ -42,7 +47,8 @@
     color: white;
 }
 
-.nav.nav-second-level > li.active {
+.nav.nav-second-level > li.active,
+.nav.nav-third-level > li.active {
   border: none;
 }
 .nav.nav-second-level.collapse[style] {
@@ -66,6 +72,10 @@
   margin-bottom: 10px;
 }
 
+.border-bottom {
+    border-bottom: 1px solid #e7eaec !important;
+}
+
 #page-wrapper {
     position: inherit;
     margin: 0 0 0 220px;
@@ -75,8 +85,32 @@
     position: relative !important;
 }
 
-.border-bottom {
-    border-bottom: 1px solid #e7eaec !important;
-}
+    #page-wrapper .item {
+        border-top: 0;
+        padding: 20px;
+        background-color: #ffffff;
+    }
+
+    #page-wrapper .item h2 {
+        margin-top: 10px;
+        font-size: 20px;
+        color: rgb(103, 106, 108);
+    }
+
+        #page-wrapper .item table {
+            margin-top: 15px;
+        }
+
+        #page-wrapper .item table .first{
+            border-top: none !important;
+        }
+
+        #page-wrapper .item table .label{
+            margin-right: 15px;
+        }
+
+    
+
+
 
 

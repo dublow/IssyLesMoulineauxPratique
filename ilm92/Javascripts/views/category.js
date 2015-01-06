@@ -2,10 +2,11 @@
 
 var grouper = {    
     categories: ['categorie1', 'categorie2', 'categorie3', 'categorie4'],
-    Model: function(key, values, hasChildCategories) {
+    Model: function(key, values, hasChildCategories, totalChilds) {
         this.key = key;
         this.values = values;
         this.hasChildCategories = hasChildCategories;
+        this.totalChilds = totalChilds;
     }
 };
 
@@ -42,6 +43,7 @@ app.CategoryView = Backbone.View.extend({
             return gItem.fields[grouper.categories[index]];
         });
 
+        
         var result = [];
         var hasChildCategories = true;
         _.each(_.keys(gb), function (item) {
@@ -55,12 +57,13 @@ app.CategoryView = Backbone.View.extend({
                     var gCat = that.groupCat(gb[item], index + 1);
                     model.values = gCat.result;
                     model.hasChildCategories = gCat.hasChildCategories;
+                     
                 } else {
                     model.values = gb[item];
                     model.hasChildCategories = false;
                     
                 }
-
+                model.totalChilds = model.values.length;
                 result.push(model);
             }
         });

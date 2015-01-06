@@ -230,11 +230,17 @@
     <Content Include="Images\slider-images\image04.jpg" />
     <Content Include="Javascripts\app.js" />
     <Content Include="Javascripts\collections\category.js" />
+    <Content Include="Javascripts\collections\items.js" />
     <Content Include="Javascripts\common.js" />
+    <Content Include="Javascripts\models\detail.js" />
     <Content Include="Javascripts\models\interet.js" />
+    <Content Include="Javascripts\templates\item.html" />
+    <Content Include="Javascripts\templates\description.html" />
     <Content Include="Javascripts\templates\interet.html" />
     <Content Include="Javascripts\views\category.js" />
+    <Content Include="Javascripts\views\description.js" />
     <Content Include="Javascripts\views\interet.js" />
+    <Content Include="Javascripts\views\items.js" />
     <Content Include="Jsons\ilm92.json" />
     <Content Include="Content\fonts\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
     <Content Include="Content\fonts\DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2" />

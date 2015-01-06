@@ -24,23 +24,14 @@ app.InteretView = Backbone.View.extend({
     },
     
     detail: function (evt) {
-        var filter = evt.currentTarget.innerText;
+        if (app.currentInteretView)
+            app.currentInteretView.close();
+        var filter = evt.currentTarget.innerText.trim();
         var deep = $(evt.currentTarget).data('deep');
         var result = _.filter(app.baseModel, function (item) {
             return item.fields['categorie' + deep] === filter;
         });
         
-    },
-    
-    recursiveFilter: function (x) {
-        if (_.isArray(x)) {
-            return _.filter(x, function (item) {
-                return item.key === this.currentTarget.innerText;
-            }, this);
-        }
-        var fr = x.key === this.currentTarget.innerText;
-        var sr = this.recursiveFilter(x.values);
-
-        return fr || sr;
+        app.currentInteretView = new app.ItemsView({ title: filter, result: result });
     }
 });

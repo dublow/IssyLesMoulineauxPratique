@@ -1,0 +1,12 @@
+﻿<script id="itemTemplate" type="text/template">
+    <h2><%= title %></h2>
+    <table class="table table-hover">
+        <tbody class="detailView">
+            <% _.each(list, function(item, index){%>
+            <tr>
+                <td class="<%= index === 0 ? 'first' : '' %> detailelement" data-index="<%= index %>"><span class="label label-success"><%= index + 1 %></span><%= item.fields.titre %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</script>

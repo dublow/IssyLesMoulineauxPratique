@@ -1,4 +1,9 @@
-﻿var app = app || {};
+﻿Backbone.View.prototype.close = function () {
+    this.$el.empty();
+    this.unbind();
+};
+
+var app = app || {};
 
 app.loadTemplate = function(templateName, callback) {
     call({
