@@ -234,6 +234,7 @@
     <Content Include="Javascripts\common.js" />
     <Content Include="Javascripts\models\detail.js" />
     <Content Include="Javascripts\models\interet.js" />
+    <Content Include="Javascripts\models\backbone.googlemaps.js" />
     <Content Include="Javascripts\templates\item.html" />
     <Content Include="Javascripts\templates\description.html" />
     <Content Include="Javascripts\templates\interet.html" />

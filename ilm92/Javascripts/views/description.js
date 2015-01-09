@@ -3,6 +3,9 @@
 
 app.DescriptionView = Backbone.View.extend({
     el: '.descriptionView',
+    events: {
+        'click .showmap' : 'showMap'
+    },
     
     render: function () {
         if (app.DescriptionViewTemplate)
@@ -18,5 +21,43 @@ app.DescriptionView = Backbone.View.extend({
         }
 
         return this;
+    },
+
+    showMap: function (evt) {
+        
+        var $target = $(evt.currentTarget),
+            lat = $target.data('lat'),
+            lng = $target.data('lng'),
+            that = this;
+
+        var places = new Backbone.GoogleMaps.LocationCollection([
+        {
+            title: that.model.titre,
+            lat: lat,
+            lng: lng
+        }
+            ]);
+
+        if (!app.Map) {
+            var map = new google.maps.Map($('#map_canvas')[0], {
+                center: new google.maps.LatLng(lat, lng),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            // Render Markers
+            app.Map = new Backbone.GoogleMaps.MarkerCollectionView({
+                collection: places,
+                map: map
+            });
+            app.Map.render();
+        } else {
+            app.Map.closeChildren();
+            app.Map.addChild(places.models[0]);
+            app.Map.map.setCenter({lat: lat, lng: lng});
+        }
+        
+        $('.itemMap').removeClass('hide');
+        
     }
 });

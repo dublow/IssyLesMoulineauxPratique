@@ -24,6 +24,7 @@ namespace ilm92
                         "~/Scripts/metismenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
+                        "~/Javascripts/models/backbone.googlemaps.js",
                         "~/Javascripts/models/interet.js",
                         "~/Javascripts/models/detail.js",
                         "~/Javascripts/collections/category.js",

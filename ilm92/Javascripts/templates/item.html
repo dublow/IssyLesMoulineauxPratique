@@ -1,12 +1,36 @@
 ﻿<script id="itemTemplate" type="text/template">
-    <h2><%= title %></h2>
-    <table class="table table-hover">
-        <tbody class="detailView">
-            <% _.each(list, function(item, index){%>
-            <tr>
-                <td class="<%= index === 0 ? 'first' : '' %> detailelement" data-index="<%= index %>"><span class="label label-success"><%= index + 1 %></span><%= item.fields.titre %></td>
-            </tr>
-            <% }) %>
-        </tbody>
-    </table>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><%= title %></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row detailView">
+                <table class="table table-hover">
+                    <tbody>
+                        <% var countFive = 0; %>
+                        <% _.each(list, function(item, index) { %>
+                        <% if(index % 5 === 0) countFive++%>
+                        <tr class="cat-<%=countFive%> <%= countFive > 1 ? 'hide' : '' %> detailelement" data-index="<%= index %>"><td><%= item.fields.titre %></td></tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                
+            </div>
+            <% if(countFive > 1) { %>
+            <nav class="text-center">
+                <ul class="pagination pagination-sm">
+                    
+                    <% for(var i = 0; i < countFive; i++) {%>
+                    <li class="<%= i === 0 ? 'active' : '' %>" data-show=".cat-<%= i + 1 %>"><a href="javascript:void(0);"><%= i + 1 %><span class="sr-only">(current)</span></a></li>
+                    <%}%>
+
+                    
+                </ul>
+            </nav>
+            <% } %>
+            
+        </div>
+    </div>
+        
+
 </script>

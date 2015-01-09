@@ -1,4 +1,5 @@
 ﻿Backbone.View.prototype.close = function () {
+    this.undelegateEvents();
     this.$el.empty();
     this.unbind();
 };

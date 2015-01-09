@@ -24,8 +24,15 @@ app.InteretView = Backbone.View.extend({
     },
     
     detail: function (evt) {
-        if (app.currentInteretView)
+        if (app.currentInteretView) {
             app.currentInteretView.close();
+            app.currentInteretView = null;
+        }
+        if (app.currentDescriptionView) {
+            app.currentDescriptionView.close();
+            app.currentDescriptionView = null;
+            $('.itemMap').addClass('hide');
+        }
         var filter = evt.currentTarget.innerText.trim();
         var deep = $(evt.currentTarget).data('deep');
         var result = _.filter(app.baseModel, function (item) {

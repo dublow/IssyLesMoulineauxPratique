@@ -2,6 +2,7 @@
 h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
 }
+
 body {
     background-color:#2f4050;
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -16,6 +17,9 @@ body {
     border-color: #2f4050;
     background-image:none;
 }
+    .navbar-default .sidebar-collapse {
+        margin-top: 55px;
+    }
 .navbar-static-side {
     z-index: 100;
     position: absolute;
@@ -89,6 +93,7 @@ body {
         border-top: 0;
         padding: 20px;
         background-color: #ffffff;
+        margin-top: 10px;
     }
 
     #page-wrapper .item h2 {
@@ -96,18 +101,31 @@ body {
         font-size: 20px;
         color: rgb(103, 106, 108);
     }
-
+        
         #page-wrapper .item table {
             margin-top: 15px;
         }
-
-        #page-wrapper .item table .first{
-            border-top: none !important;
+   
+        #page-wrapper .item table tr{
+            cursor: pointer;
         }
 
         #page-wrapper .item table .label{
             margin-right: 15px;
         }
+
+        .pagination{
+            margin: 0;
+        }
+.panel {
+    min-height: 330px;
+}
+
+.detailView {
+    min-height: 226px;
+}
+
+#map_canvas { height: 400px; }
 
     
 
