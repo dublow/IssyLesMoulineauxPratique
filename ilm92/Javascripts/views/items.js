@@ -49,6 +49,8 @@ app.ItemsView = Backbone.View.extend({
             model: element
         });
         app.currentDescriptionView.render();
+
+        ga('send', 'event', element.titre, 'click', 'Détail');
     },
 
     pagination: function (evt) {

@@ -9,7 +9,7 @@
             _.each(obj, function(item){
                 className = item.hasChildCategories ? 'noExpand' : 'expand';
                 plusTime = item.hasChildCategories ? '<span class="fa plus-times"></span>' : '';
-                tpl += '<li class="' + className + '" data-deep="' + deep + '"><a href="#">' + item.key + plusTime + '</a>';
+                tpl += '<li class="' + className + '" data-deep="' + deep + '"><a href="#" >' + item.key + plusTime + '</a>';
                 if(item.hasChildCategories){
                     deep++;
                     tpl += iterator(item.values, item.hasChildCategories);

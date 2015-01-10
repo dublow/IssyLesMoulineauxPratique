@@ -3,6 +3,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
 }
 
+html, body
+{
+    height: 100%;
+}
+
 body {
     background-color:#2f4050;
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -11,6 +16,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     margin-top: -1px;
+    height: 100%;
 }
 .navbar-default {
     background-color: transparent;
@@ -83,7 +89,7 @@ body {
 #page-wrapper {
     position: inherit;
     margin: 0 0 0 220px;
-    min-height: 1200px;
+    height: 100%;
     background-color: #f3f3f4;
     padding: 0 20px;
     position: relative !important;
@@ -126,6 +132,16 @@ body {
 }
 
 #map_canvas { height: 400px; }
+
+.footer {
+  background: none repeat scroll 0 0 white;
+  border-top: 1px solid #e7eaec;
+  bottom: 0;
+  left: 0;
+  padding: 10px 20px;
+  position: absolute;
+  right: 0;
+}
 
     
 

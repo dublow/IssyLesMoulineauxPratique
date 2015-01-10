@@ -24,6 +24,8 @@ app.InteretView = Backbone.View.extend({
     },
     
     detail: function (evt) {
+
+        
         if (app.currentInteretView) {
             app.currentInteretView.close();
             app.currentInteretView = null;
@@ -40,5 +42,7 @@ app.InteretView = Backbone.View.extend({
         });
         
         app.currentInteretView = new app.ItemsView({ title: filter, result: result });
+
+        ga('send', 'event', filter, 'click', 'Catégorie');
     }
 });

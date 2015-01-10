@@ -19,16 +19,12 @@
             <% if(countFive > 1) { %>
             <nav class="text-center">
                 <ul class="pagination pagination-sm">
-                    
                     <% for(var i = 0; i < countFive; i++) {%>
                     <li class="<%= i === 0 ? 'active' : '' %>" data-show=".cat-<%= i + 1 %>"><a href="javascript:void(0);"><%= i + 1 %><span class="sr-only">(current)</span></a></li>
                     <%}%>
-
-                    
                 </ul>
             </nav>
             <% } %>
-            
         </div>
     </div>
         

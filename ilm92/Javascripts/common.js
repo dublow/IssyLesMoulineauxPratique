@@ -8,7 +8,7 @@ var app = app || {};
 
 app.loadTemplate = function(templateName, callback) {
     call({
-        url: '/Javascripts/templates/' + templateName,
+        url: '/issyinteret/Javascripts/templates/' + templateName,
         type: 'GET',
         dataType: 'html',
         async: false
