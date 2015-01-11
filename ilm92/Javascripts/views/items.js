@@ -32,6 +32,8 @@ app.ItemsView = Backbone.View.extend({
             app.currentDescriptionView.close();
             app.currentDescriptionView = null;
             $('.itemMap').addClass('hide');
+
+            app.changeForMap(window);
         }
         var element = this.collection.models[$(evt.currentTarget).data('index')].attributes.fields;
         if (!element.description)

@@ -19,6 +19,7 @@ namespace ilm92
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
+                        "~/Scripts/bootstrap.min.js",
                         "~/Scripts/underscore.js",
                         "~/Scripts/backbone.js",
                         "~/Scripts/metismenu.js"));
@@ -44,23 +45,12 @@ namespace ilm92
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/bootstrap.min.css",
+                        "~/Content/bootstrap-theme.min.css",
+                        "~/Content/font-awesome.min.css",
                         "~/Content/metisMenu.css",
                         "~/Content/site.css"
                         ));
-
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
         }
     }
 }

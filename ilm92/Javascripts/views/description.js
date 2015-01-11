@@ -58,6 +58,7 @@ app.DescriptionView = Backbone.View.extend({
         }
         
         $('.itemMap').removeClass('hide');
-        
+
+        app.changeForMap(window);
     }
 });

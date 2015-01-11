@@ -1,31 +1,31 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
+        @{
+            var icon = ilm92.Commons.Helper.IsProd == "true" ? "/IssyInteret/Images/favicon.png" : "/Images/favicon.png";
+            
+        }
         <title>Issy les Moulineaux - Points d'intérêt</title>  
-        <link rel="icon" href="/IssyInteret/Images/favicon.png">
+        <link rel="icon" href="@icon">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
-
-
-
+    <script>
+        var isProd =  '@ilm92.Commons.Helper.IsProd' === 'true';
+    </script>
 <body>
     <div id="fb-root"></div>
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/vendors")
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEA1EfblRa9_D2mPMk3zRM-pa-w1DNeC4&sensor=false"></script>
+
     @RenderSection("scripts", required: false)
+
+    <!--GA-->
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -39,6 +39,7 @@
 
     </script>
 
+    <!--USERVOICE-->
     <script>
         // Include the UserVoice JavaScript SDK (only needed once on a page)
         UserVoice = window.UserVoice || []; (function () { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = '//widget.uservoice.com/EFcBy5Tv96lTXDdsW6iLw.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s) })();
@@ -62,7 +63,7 @@
         UserVoice.push(['autoprompt', {}]);
     </script>
 
-    
+    <!--FB-->
     <script>
         (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
