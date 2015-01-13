@@ -24,7 +24,12 @@ body {
     background-image:none;
 }
     .navbar-default .sidebar-collapse {
-        margin-top: 55px;
+        /*margin-top: 55px;*/
+    }
+
+    .navbar-default .form-group {
+        margin-top: 20px;
+        margin-bottom: 0;
     }
 .navbar-static-side {
     z-index: 100;

@@ -40,6 +40,17 @@ app.CategoryView = Backbone.View.extend({
             input: $("#search"),
             model: new app.Searchs(app.baseModel),
             onSelect: function (model) {
+                if (app.currentInteretView) {
+                    app.currentInteretView.close();
+                    app.currentInteretView = null;
+                }
+                if (app.currentDescriptionView) {
+                    app.currentDescriptionView.close();
+                    app.currentDescriptionView = null;
+                    $('.itemMap').addClass('hide');
+
+                    app.changeForMap(window);
+                }
                 var keysModel = _.sortBy(_.keys(model.attributes.fields), function(item) {
                     return item;
                 });
