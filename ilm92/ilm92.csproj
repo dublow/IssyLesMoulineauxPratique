@@ -149,6 +149,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\backbone.autocomplete.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\site.css" />
@@ -193,10 +194,13 @@
     <Content Include="Javascripts\app.js" />
     <Content Include="Javascripts\collections\category.js" />
     <Content Include="Javascripts\collections\items.js" />
+    <Content Include="Javascripts\collections\search.js" />
     <Content Include="Javascripts\common.js" />
+    <Content Include="Javascripts\views\backbone.autocomplete.js" />
     <Content Include="Javascripts\models\detail.js" />
     <Content Include="Javascripts\models\interet.js" />
-    <Content Include="Javascripts\models\backbone.googlemaps.js" />
+    <Content Include="Javascripts\views\backbone.googlemaps.js" />
+    <Content Include="Javascripts\models\search.js" />
     <Content Include="Javascripts\templates\item.html" />
     <Content Include="Javascripts\templates\description.html" />
     <Content Include="Javascripts\templates\interet.html" />
