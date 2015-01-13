@@ -91,7 +91,7 @@ var AutoCompleteView = Backbone.View.extend({
             if (this.isValid(keyword)) {
                 this.filter(keyword);
             } else {
-                this.hide()
+                this.hide();
             }
             this.currentText = keyword; // tkes, moved here from loadResult
         }

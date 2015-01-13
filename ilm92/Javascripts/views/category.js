@@ -11,7 +11,7 @@ var grouper = {
 };
 
 app.CategoryView = Backbone.View.extend({
-    el: '.navbar-static-side',
+    el: '.sidebar-collapse',
     
     initialize: function (initialCategory) {
         var gp = this.groupCat(initialCategory).result;
@@ -39,7 +39,23 @@ app.CategoryView = Backbone.View.extend({
         new AutoCompleteView({
             input: $("#search"),
             model: new app.Searchs(app.baseModel),
-            onSelect: function (model) { console.log(model) }
+            onSelect: function (model) {
+                var keysModel = _.sortBy(_.keys(model.attributes.fields), function(item) {
+                    return item;
+                });
+                var lastCategorie = '';
+                for (var i = 0, count = keysModel.length; i < count; i++) {
+                    if (keysModel[i] === 'categorie' + i)
+                        lastCategorie = keysModel[i];
+                }
+
+                var result = _.filter(app.baseModel, function (item) {
+                    return item.fields[lastCategorie] === model.attributes.fields[lastCategorie];
+                });
+
+                app.currentInteretView = new app.ItemsView({ title: model.attributes.fields[lastCategorie], result: result });
+                
+            }
         }).render();
     },
 
