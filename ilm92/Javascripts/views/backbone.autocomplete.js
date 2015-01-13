@@ -5,8 +5,8 @@
     events: {
         "click": "select"
     },
-
-    initialize: function (options) {
+    
+    initialize: function(options) {
         this.options = options;
     },
 
@@ -16,7 +16,7 @@
         }));
         return this;
     },
-
+    
     highlight: function (label) {    // tkes, highlight keyword in result
         var op = this.options.parent;
         if (label && op.highlight && op.currentText) {
@@ -30,10 +30,10 @@
         return label;
     },
 
-    escapeRegExp: function (str) {
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-        return String(str).replace(/([.*+?^${}()|\[\]\/\\])/g, "\\$1");
-    },
+	escapeRegExp: function(str) {
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+		return String(str).replace(/([.*+?^${}()|\[\]\/\\])/g, "\\$1");
+	},
 
     select: function () {
         this.options.parent.hide().select(this.model);
@@ -81,8 +81,8 @@ var AutoCompleteView = Backbone.View.extend({
         if (event.keyCode == 27) return this.hide();
     },
 
-    blur: function () {
-        this.hide();
+    blur: function() {
+        //this.hide();
     },
 
     keyup: function () {
@@ -186,6 +186,6 @@ var AutoCompleteView = Backbone.View.extend({
     },
 
     // callback definitions
-    onSelect: function () { }
+    onSelect: function () {}
 
 });

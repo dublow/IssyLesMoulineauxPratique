@@ -11,12 +11,13 @@ var grouper = {
 };
 
 app.CategoryView = Backbone.View.extend({
-    el: '.sidebar-collapse',
+    el: '.navbar-static-side',
     
     initialize: function (initialCategory) {
         var gp = this.groupCat(initialCategory).result;
         this.collection = new app.Category(gp);
         this.render();
+        this.renderSearch();
     },
     
     render: function() {
@@ -33,7 +34,15 @@ app.CategoryView = Backbone.View.extend({
 
         this.$el.append(interetView.render().el);
     },
-    
+
+    renderSearch: function() {
+        new AutoCompleteView({
+            input: $("#search"),
+            model: new app.Searchs(app.baseModel),
+            onSelect: function (model) { console.log(model) }
+        }).render();
+    },
+
     groupCat: function (list, idx) {
         
         var that = this,
