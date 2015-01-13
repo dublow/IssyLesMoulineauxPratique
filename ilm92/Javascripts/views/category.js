@@ -64,8 +64,26 @@ app.CategoryView = Backbone.View.extend({
                     return item.fields[lastCategorie] === model.attributes.fields[lastCategorie];
                 });
 
+                var cursor = 1;
+                var canEach = true;
+                var currentPagination;
+                _.each(result, function (item, index) {
+                    if (index > 0 && index % 5 === 0)
+                        cursor++;
+                    if (canEach && item.fields.titre === model.attributes.fields.titre) {
+                        currentPagination = cursor;
+                        canEach = false;
+                    }
+                });
+
                 app.currentInteretView = new app.ItemsView({ title: model.attributes.fields[lastCategorie], result: result });
-                
+
+                if (currentPagination > 1)
+                    app.currentInteretView.manualPagination(currentPagination);
+
+                app.currentInteretView.manualDetailElement(model.attributes.fields);
+
+                ga('send', 'event', model.attributes.fields.titre, 'click', 'Recherche');
             }
         }).render();
     },

@@ -60,5 +60,42 @@ app.ItemsView = Backbone.View.extend({
         $(evt.currentTarget).addClass('active');
         $('.detailView tr').addClass('hide');
         $($(evt.currentTarget).data('show')).removeClass('hide');
+    },
+
+    manualPagination: function (position, model) {
+        $('.pagination li').removeClass('active');
+        var li = _.find($('.pagination li'), function (item) {
+            return $(item).data('show') === '.cat-' + position;
+        });
+
+        $(li).addClass('active');
+        $('.detailView tr').addClass('hide');
+        $($(li).data('show')).removeClass('hide');
+    },
+
+    manualDetailElement: function (model) {
+        if (app.currentDescriptionView) {
+            app.currentDescriptionView.close();
+            app.currentDescriptionView = null;
+            $('.itemMap').addClass('hide');
+
+            app.changeForMap(window);
+        }
+        var element = model
+        if (!element.description)
+            element.description = '';
+        if (!element.telephone)
+            element.telephone = '';
+        if (!element.email)
+            element.email = '';
+        if (!element.url)
+            element.url = '';
+        else if (element.url.indexOf('http://') === -1)
+            element.url = 'http://' + element.url;
+
+        app.currentDescriptionView = new app.DescriptionView({
+            model: element
+        });
+        app.currentDescriptionView.render();
     }
 });
