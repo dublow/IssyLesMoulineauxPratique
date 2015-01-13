@@ -25,11 +25,14 @@ namespace ilm92
                         "~/Scripts/metismenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
-                        "~/Javascripts/models/backbone.googlemaps.js",
+                        "~/Javascripts/models/search.js",
                         "~/Javascripts/models/interet.js",
                         "~/Javascripts/models/detail.js",
+                        "~/Javascripts/collections/search.js",
                         "~/Javascripts/collections/category.js",
                         "~/Javascripts/collections/Items.js",
+                        "~/Javascripts/views/backbone.googlemaps.js",
+                        "~/Javascripts/views/backbone.autocomplete.js",
                         "~/Javascripts/views/interetItem.js",
                         "~/Javascripts/views/interet.js",
                         "~/Javascripts/views/category.js",
@@ -49,6 +52,7 @@ namespace ilm92
                         "~/Content/bootstrap-theme.min.css",
                         "~/Content/font-awesome.min.css",
                         "~/Content/metisMenu.css",
+                        "~/Content/backbone.autocomplete.css",
                         "~/Content/site.css"
                         ));
         }
