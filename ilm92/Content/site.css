@@ -3,6 +3,10 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 100;
 }
 
+.mr2 {
+    margin-right: 3%;
+}
+
 html, body
 {
     height: 100%;
@@ -147,6 +151,31 @@ body {
   position: absolute;
   right: 0;
 }
+
+.social {
+	font-size: 1px;
+}
+ 
+/* This gets Google to fall into place */
+.social-share {
+	font-size: 1px;
+}
+ 
+/* This gets Facebook to fall into place */
+.social-share iframe {
+	vertical-align: middle;
+	
+}
+.fb-share-button{
+ margin-right:20px;
+}
+/* Set an optional width for your button wrappers */
+.social-share span {
+	display: inline-block;
+	width: 110px;
+}
+ 
+
 
     
 
