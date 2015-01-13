@@ -2,7 +2,6 @@
 app.baseModel;
 $(function () {
     $.get(app.urls.json, function (model) {
-        var initialHeight = $(document).height();
         app.baseModel = JSON.parse(model);
         app.baseModel = _.sortBy(app.baseModel, function (item) {
             return [item.fields.categorie1, item.fields.categorie2, item.fields.categorie3, item.fields.categorie4, item.fields.titre].join("_");

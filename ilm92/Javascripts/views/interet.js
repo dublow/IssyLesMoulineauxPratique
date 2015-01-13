@@ -37,8 +37,9 @@ app.InteretView = Backbone.View.extend({
 
             app.changeForMap(window);
         }
-        var filter = evt.currentTarget.innerText.trim();
-        var deep = $(evt.currentTarget).data('deep');
+        var target = $(evt.currentTarget);
+        var filter = target.text().trim();
+        var deep = target.data('deep');
         var result = _.filter(app.baseModel, function (item) {
             return item.fields['categorie' + deep] === filter;
         });
