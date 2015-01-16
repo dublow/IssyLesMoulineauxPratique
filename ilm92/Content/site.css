@@ -94,7 +94,6 @@ body {
 .border-bottom {
     border-bottom: 1px solid #e7eaec !important;
 }
-
 #page-wrapper {
     position: inherit;
     margin: 0 0 0 220px;
@@ -103,8 +102,7 @@ body {
     padding: 0 20px;
     position: relative !important;
 }
-
-    #page-wrapper .item {
+#page-wrapper .item {
         border-top: 0;
         padding: 20px;
         background-color: #ffffff;
@@ -132,6 +130,34 @@ body {
         .pagination{
             margin: 0;
         }
+@media (max-width: 768px) {
+    .navbar-static-side {
+        z-index: 100;
+        position: inherit;
+        width: auto;
+        }
+    #page-wrapper {
+        position: inherit;
+        margin: 0;
+        height: 100%;
+        background-color: #f3f3f4;
+        padding: 0 20px;
+        position: relative !important;
+    }
+
+    .mobileTitle {
+        background-color: #f3f3f4;
+    }
+
+    .mobileTitle h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+      
+}
+
+
+    
 .panel {
     min-height: 330px;
 }
