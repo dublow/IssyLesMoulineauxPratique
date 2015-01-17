@@ -30,6 +30,12 @@ app.DescriptionView = Backbone.View.extend({
             lng = $target.data('lng'),
             that = this;
 
+        var nativeMap = app.nativeMap(lat, lng);
+        if (nativeMap.active) {
+            location.href = nativeMap.url;
+            return;
+        }
+
         var places = new Backbone.GoogleMaps.LocationCollection([
         {
             title: that.model.titre,

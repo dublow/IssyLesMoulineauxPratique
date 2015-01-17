@@ -6,6 +6,19 @@
 
 var app = app || {};
 
+app.nativeMap = function (lat, lng) {
+    var result = { active: false };
+    if (isMobile.iOS()) {
+        result.active = true;
+        result.url = 'http://maps.apple.com/?q=' + lat + ',' + lng;
+    } else if (isMobile.Android()) {
+        result.active = true;
+        result.url = 'geo:' + lat + ',' + lng;
+    }
+
+    return result;
+}
+
 app.urls = {
     template: isProd ? '/issyinteret/Javascripts/templates/' : '/Javascripts/templates/',
     json: isProd ? '/issyinteret/Home/GetIlm92' : '/Home/GetIlm92'
@@ -57,4 +70,13 @@ var allHeight = function (win) {
 
 var call = function (options, done) {
     $.ajax(options).done(done);
+};
+
+var isMobile = {
+    Android: function () { return navigator.userAgent.match(/Android/i); },
+    BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+    iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+    Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+    Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+    any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
 };
