@@ -21,7 +21,9 @@ app.nativeMap = function (lat, lng) {
 
 app.urls = {
     template: isProd ? '/issyinteret/Javascripts/templates/' : '/Javascripts/templates/',
-    json: isProd ? '/issyinteret/Home/GetIlm92' : '/Home/GetIlm92'
+    interets: isProd ? '/issyinteret/Home/GetIlm92' : '/Home/GetIlm92',
+    events: isProd ? '/issyinteret/Home/GetEventIlm92' : '/Home/GetEventIlm92'
+
 }
 
 app.loadTemplate = function(templateName, callback) {

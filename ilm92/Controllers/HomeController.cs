@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ilm92.Commons;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,11 @@ namespace ilm92.Controllers
                 return Json(streamReader.ReadToEnd(), JsonRequestBehavior.AllowGet);
             }
             return Json(null);
+        }
+
+        public JsonResult GetEventIlm92()
+        {
+            return Json(Helper.LoadJson("http://issy.com/ws/agenda/next/100"), JsonRequestBehavior.AllowGet);
         }
     }
 }
