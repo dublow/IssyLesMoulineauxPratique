@@ -46,6 +46,7 @@ app.InteretView = Backbone.View.extend({
         
         app.currentInteretView = new app.ItemsView({ title: filter, result: result });
         
-        ga('send', 'event', filter, 'click', 'Catégorie');
+        if(isProd)
+            ga('send', 'event', filter, 'click', 'Catégorie');
     }
 });

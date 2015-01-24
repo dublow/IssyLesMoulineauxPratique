@@ -1,5 +1,5 @@
 ﻿var app = app || {};
-app.baseModel;
+
 $(function () {
     // Catégories
     $.get(app.urls.interets, function (model) {
@@ -8,7 +8,11 @@ $(function () {
             return [item.fields.categorie1, item.fields.categorie2, item.fields.categorie3, item.fields.categorie4, item.fields.titre].join("_");
         });
         
-        new app.CategoryView(app.baseModel);
+        app.categoryView = new app.CategoryView(app.baseModel);
+
+        app.addTitleHash();
+        app.Router.start();
+
         $(".menu").metisMenu();
 
         $('.sidebar-collapse .menu ul')

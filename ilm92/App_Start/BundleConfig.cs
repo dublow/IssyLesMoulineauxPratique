@@ -25,6 +25,7 @@ namespace ilm92
                         "~/Scripts/metismenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
+                        "~/Javascripts/router.js",
                         "~/Javascripts/models/search.js",
                         "~/Javascripts/models/interet.js",
                         "~/Javascripts/models/detail.js",

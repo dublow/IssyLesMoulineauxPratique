@@ -1,4 +1,7 @@
 ﻿using ilm92.Commons;
+using ilm92.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +24,7 @@ namespace ilm92.Controllers
             using (StreamReader streamReader = new StreamReader(HttpContext.Server.MapPath("~/Jsons/ilm92.json")))
             {
                 return Json(streamReader.ReadToEnd(), JsonRequestBehavior.AllowGet);
+                
             }
             return Json(null);
         }
@@ -29,5 +33,7 @@ namespace ilm92.Controllers
         {
             return Json(Helper.LoadJson("http://issy.com/ws/agenda/next/100"), JsonRequestBehavior.AllowGet);
         }
+
+        
     }
 }

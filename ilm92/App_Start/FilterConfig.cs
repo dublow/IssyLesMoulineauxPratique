@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using ilm92.Attributes;
+using System.Web;
 using System.Web.Mvc;
 
 namespace ilm92
@@ -8,6 +9,7 @@ namespace ilm92
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AjaxCrawlableAttribute());
         }
     }
 }

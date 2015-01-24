@@ -55,6 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleMvcSitemap">
+      <HintPath>..\packages\SimpleMvcSitemap.2.3.1\lib\net45\SimpleMvcSitemap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -141,11 +144,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\AjaxCrawlableAttribute.cs" />
     <Compile Include="Commons\Helper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\InteretModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +202,7 @@
     <Content Include="Javascripts\collections\items.js" />
     <Content Include="Javascripts\collections\search.js" />
     <Content Include="Javascripts\common.js" />
+    <Content Include="Javascripts\router.js" />
     <Content Include="Javascripts\views\backbone.autocomplete.js" />
     <Content Include="Javascripts\models\detail.js" />
     <Content Include="Javascripts\models\interet.js" />
@@ -260,10 +267,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Page\SiteMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

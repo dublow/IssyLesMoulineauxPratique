@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Affiche les points d'intérêt sous forme de liste et de lieu géolocalisés d'Issy-les-Moulineaux." />
         <meta name="keywords" content="Issy-les-Moulineaux, Hauts-de-Seine, point d'intérêts, open-data, opendata, geolocalisation, geolocalise, données publiques, jeu de données, poi" />
+
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
@@ -30,40 +31,45 @@
 
     <!--GA-->
     <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        if (isProd) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-41991114-2', 'auto');
-        ga('send', 'pageview');
+            ga('create', 'UA-41991114-2', 'auto');
+            ga('send', 'pageview');
+        }
 
     </script>
 
     <!--USERVOICE-->
     <script>
-        // Include the UserVoice JavaScript SDK (only needed once on a page)
-        UserVoice = window.UserVoice || []; (function () { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = '//widget.uservoice.com/EFcBy5Tv96lTXDdsW6iLw.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s) })();
+        if (isProd) {
+            // Include the UserVoice JavaScript SDK (only needed once on a page)
+            UserVoice = window.UserVoice || []; (function () { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = '//widget.uservoice.com/EFcBy5Tv96lTXDdsW6iLw.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s) })();
 
-        //
-        // UserVoice Javascript SDK developer documentation:
-        // https://www.uservoice.com/o/javascript-sdk
-        //
+            //
+            // UserVoice Javascript SDK developer documentation:
+            // https://www.uservoice.com/o/javascript-sdk
+            //
 
-        // Set colors
-        UserVoice.push(['set', {
-            accent_color: '#448dd6',
-            trigger_color: 'white',
-            trigger_background_color: 'rgba(46, 49, 51, 0.6)'
-        }]);
+            // Set colors
+            UserVoice.push(['set', {
+                accent_color: '#448dd6',
+                trigger_color: 'white',
+                trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+            }]);
 
-        // Add default trigger to the bottom-right corner of the window:
-        UserVoice.push(['addTrigger', { mode: 'smartvote', trigger_position: 'top-right' }]);
+            // Add default trigger to the bottom-right corner of the window:
+            UserVoice.push(['addTrigger', { mode: 'smartvote', trigger_position: 'top-right' }]);
 
-        // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
-        UserVoice.push(['autoprompt', {}]);
+            // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+            UserVoice.push(['autoprompt', {}]);
+        }
+        
     </script>
 
     <!--FB-->

@@ -5,6 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using SimpleMvcSitemap;
+using System.Web.Mvc;
 
 namespace ilm92.Commons
 {
@@ -27,5 +31,35 @@ namespace ilm92.Commons
                 }
             }
         }
+
+        public static string ReplaceParam(string value)
+        {
+            string result = Regex.Replace(ReplaceAccent(value), @"[^0-9a-zA-Z]+", "-");
+            return string.Join("", result.Split('-')).ToLower();
+        }
+
+        public static ActionResult CreateSitemap(UrlHelper urlHelper, IEnumerable<string> urls)
+        {
+            var siteMapNodes = (from url in urls
+                                select new SimpleMvcSitemap.SitemapNode("http://dblw.fr/IssyInteret/#!" + url));
+
+            return new SitemapProvider().CreateSitemap(new HttpContextWrapper(HttpContext.Current), siteMapNodes);
+        }
+
+        private static string ReplaceAccent(string value)
+        {
+            char[] replacement = { 'a', 'a', 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'n', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'y', 'y' };
+            char[] accents = { 'à', 'á', 'â', 'ã', 'ä', 'å', 'ç', 'é', 'è', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'ö', 'õ', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ' };
+
+
+            for (int i = 0; i < accents.Length; i++)
+            {
+                value = value.Replace(accents[i], replacement[i]);
+            }
+
+            return value;
+        }
+
+        
     }
 }

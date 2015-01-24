@@ -35,57 +35,65 @@ app.CategoryView = Backbone.View.extend({
         this.$el.append(interetView.render().el);
     },
 
-    renderSearch: function() {
+    renderSearch: function () {
+        var that = this;
         new AutoCompleteView({
             input: $("#search"),
             model: new app.Searchs(app.baseModel),
             onSelect: function (model) {
-                if (app.currentInteretView) {
-                    app.currentInteretView.close();
-                    app.currentInteretView = null;
-                }
-                if (app.currentDescriptionView) {
-                    app.currentDescriptionView.close();
-                    app.currentDescriptionView = null;
-                    $('.itemMap').addClass('hide');
-
-                    app.changeForMap(window);
-                }
-                var keysModel = _.sortBy(_.keys(model.attributes.fields), function(item) {
-                    return item;
-                });
-                var lastCategorie = '';
-                for (var i = 0, count = keysModel.length; i < count; i++) {
-                    if (keysModel[i] === 'categorie' + i)
-                        lastCategorie = keysModel[i];
-                }
-
-                var result = _.filter(app.baseModel, function (item) {
-                    return item.fields[lastCategorie] === model.attributes.fields[lastCategorie];
-                });
-
-                var cursor = 1;
-                var canEach = true;
-                var currentPagination;
-                _.each(result, function (item, index) {
-                    if (index > 0 && index % 5 === 0)
-                        cursor++;
-                    if (canEach && item.fields.titre === model.attributes.fields.titre) {
-                        currentPagination = cursor;
-                        canEach = false;
-                    }
-                });
-
-                app.currentInteretView = new app.ItemsView({ title: model.attributes.fields[lastCategorie], result: result });
-
-                if (currentPagination > 1)
-                    app.currentInteretView.manualPagination(currentPagination);
-
-                app.currentInteretView.manualDetailElement(model.attributes.fields);
-
-                ga('send', 'event', model.attributes.fields.titre, 'click', 'Recherche');
+                that.renderRouter(model.attributes);
+                if(isProd)
+                    ga('send', 'event', model.attributes.fields.titre, 'click', 'Recherche');
             }
         }).render();
+    },
+
+    renderRouter: function(model){
+        if (app.currentInteretView) {
+            app.currentInteretView.close();
+            app.currentInteretView = null;
+        }
+        if (app.currentDescriptionView) {
+            app.currentDescriptionView.close();
+            app.currentDescriptionView = null;
+            $('.itemMap').addClass('hide');
+
+            app.changeForMap(window);
+        }
+        var keysModel = _.sortBy(_.keys(model.fields), function (item) {
+            return item;
+        });
+        var lastCategorie = '';
+        for (var i = 0, count = keysModel.length; i < count; i++) {
+            if (keysModel[i] === 'categorie' + i)
+                lastCategorie = keysModel[i];
+        }
+
+        var result = _.filter(app.baseModel, function (item) {
+            return item.fields[lastCategorie] === model.fields[lastCategorie];
+        });
+
+        var cursor = 1;
+        var canEach = true;
+        var currentPagination;
+        _.each(result, function (item, index) {
+            if (index > 0 && index % 5 === 0)
+                cursor++;
+            if (canEach && item.fields.titre === model.fields.titre) {
+                currentPagination = cursor;
+                canEach = false;
+            }
+        });
+
+        app.currentInteretView = new app.ItemsView({ title: model.fields[lastCategorie], result: result });
+
+        if (currentPagination > 1)
+            app.currentInteretView.manualPagination(currentPagination);
+
+        app.currentInteretView.manualDetailElement(model.fields);
+
+        if (isProd)
+            ga('send', 'event', model.fields.titre, 'click', 'Router');
     },
 
     groupCat: function (list, idx) {
