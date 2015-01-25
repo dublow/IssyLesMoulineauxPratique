@@ -32,6 +32,14 @@ namespace ilm92.Commons
             }
         }
 
+        public static string LoadTemplate(string templateName)
+        { 
+            using (StreamReader streamReader = new StreamReader(templateName))
+            {
+                return streamReader.ReadToEnd();
+            }
+        }
+
         public static string ReplaceParam(string value)
         {
             string result = Regex.Replace(ReplaceAccent(value), @"[^0-9a-zA-Z]+", "-");

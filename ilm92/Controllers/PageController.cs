@@ -17,6 +17,8 @@ namespace ilm92.Controllers
         // GET: /Page/
         public ActionResult Index(string id)
         {
+            return Redirect("http://dblw.fr/IssyInteret#!" + id);
+
             using (StreamReader streamReader = new StreamReader(HttpContext.Server.MapPath("~/Jsons/ilm92.json")))
             {
                 JArray interets = JArray.Parse(streamReader.ReadToEnd());

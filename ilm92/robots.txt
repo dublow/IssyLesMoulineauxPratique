@@ -1,5 +1,4 @@
-﻿# robots.txt generated at http://www.mcanerin.com
-User-agent: *
+﻿User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: http://dblw.fr/issyinteret
+Sitemap: http://dblw.fr/issyinteret/sitemap.xml

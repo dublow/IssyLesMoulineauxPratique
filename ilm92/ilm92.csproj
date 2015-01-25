@@ -55,6 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.5.2\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleMvcSitemap">
       <HintPath>..\packages\SimpleMvcSitemap.2.3.1\lib\net45\SimpleMvcSitemap.dll</HintPath>
     </Reference>
@@ -269,6 +272,7 @@
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Page\SiteMap.cshtml" />
+    <Content Include="Template\Page.tpl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

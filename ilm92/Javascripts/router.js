@@ -12,7 +12,7 @@ app.Router = {
 
         appRouter.on('route:defaultRoute', function (action) {
             var itemModel = _.find(app.baseModel, function (item) {
-                return item.fields.titreHash === action;
+                return item.fields.titreHash === decodeURIComponent(action);
             });
 
             if (itemModel)

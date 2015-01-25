@@ -1,5 +1,13 @@
-﻿using System;
+﻿using ilm92.Commons;
+using ilm92.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using RazorEngine;
+using RazorEngine.Configuration;
+using RazorEngine.Templating;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,16 +27,27 @@ namespace ilm92.Attributes
                 return;
 
             var parts = request.QueryString[Fragment].Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            var routeValues = new AjaxRoute();
+            using (StreamReader streamReader = new StreamReader(filterContext.HttpContext.Server.MapPath("~/Jsons/ilm92.json")))
+            {
+                JArray interets = JArray.Parse(streamReader.ReadToEnd());
 
+                var result = (from item in interets
+                              where Helper.ReplaceParam((string)item["fields"]["titre"]) == parts[0]
+                              select item).FirstOrDefault();
+                if (result == null)
+                    return;
+                var template = Helper.LoadTemplate(filterContext.HttpContext.Server.MapPath("~/Template/Page.tpl"));
+                var model = JsonConvert.DeserializeObject<InteretModel>(result.ToString());
 
-                routeValues.Controller = "Page";
+                var templateResult = Engine.Razor.RunCompile(template, "templateKey", typeof(InteretModel), model);
 
-                routeValues.Action = "Index";
-
-                routeValues.Id = parts[0];
-
-            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(routeValues));
+                var contentResult = new ContentResult{
+                    ContentType = "text/html",
+                    ContentEncoding = System.Text.Encoding.UTF8,
+                    Content = templateResult
+                };
+                filterContext.Result = contentResult;
+            }
         }
     }
 

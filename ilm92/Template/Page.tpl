@@ -4,9 +4,6 @@
     ViewBag.Title = "Index";
     Layout = null;
     var icon = ilm92.Commons.Helper.IsProd == "true" ? "/IssyInteret/Images/favicon.png" : "/Images/favicon.png";
-    var desc = string.IsNullOrEmpty(Model.Fields.Description) 
-        ? " Affiche les points d'intérêt sous forme de liste et de lieu géolocalisés d'Issy-les-Moulineaux." 
-        : Model.Fields.Description;
 }
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +13,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@desc" />
+    <meta name="description" content="Affiche les points d'intérêt sous forme de liste et de lieu géolocalisés d'Issy-les-Moulineaux." />
     <meta name="keywords" content="Issy-les-Moulineaux, Hauts-de-Seine, point d'intérêts, open-data, opendata, geolocalisation, geolocalise, données publiques, jeu de données, poi" />
 </head>
 <body>
