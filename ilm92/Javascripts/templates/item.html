@@ -10,7 +10,16 @@
                         <% var countFive = 0; %>
                         <% _.each(list, function(item, index) { %>
                         <% if(index % 5 === 0) countFive++%>
-                        <tr class="cat-<%=countFive%> <%= countFive > 1 ? 'hide' : '' %> detailelement" data-index="<%= index %>"><td><%= item.fields.titre %></td></tr>
+                        <tr class="cat-<%=countFive%> <%= countFive > 1 ? 'hide' : '' %> detailelement" data-index="<%= index %>">
+                            <td><%= item.fields.titre %></td>
+                            <td>
+                                <div class="hidden-xs">
+                                    <% if(item.fields.url) { %> <span class="label label-primary" title="<%= item.fields.url %>"><i class="fa fa-globe"></i></span><% } %>
+                                    <% if(item.fields.telephone) { %> <span class="label label-success" title="<%= item.fields.telephone %>"><i class="fa fa-mobile"></i></span> <% } %>
+                                    <% if(item.fields.description) { %> <span class="label label-warning" title="Description"><i class="fa fa-bars"></i></span> <% } %>
+                                </div>
+                            </td>
+                        </tr>
                         <% }) %>
                     </tbody>
                 </table>

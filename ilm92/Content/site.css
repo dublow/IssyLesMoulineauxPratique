@@ -123,10 +123,6 @@ body {
             cursor: pointer;
         }
 
-        #page-wrapper .item table .label{
-            margin-right: 15px;
-        }
-
         .pagination{
             margin: 0;
         }
