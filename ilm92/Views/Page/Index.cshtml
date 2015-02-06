@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = null;
-    var icon = ilm92.Commons.Helper.IsProd == "true" ? "/IssyInteret/Images/favicon.png" : "/Images/favicon.png";
+    var icon = "/Images/favicon.png";
     var desc = string.IsNullOrEmpty(Model.Fields.Description) 
         ? " Affiche les points d'intérêt sous forme de liste et de lieu géolocalisés d'Issy-les-Moulineaux." 
         : Model.Fields.Description;
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Issy les Moulineaux - Points d'intérêt - @Model.Fields.Titre</title>
+    <title>@Model.Fields.Titre</title>
     <link rel="icon" href="@icon">
 
     <meta charset="utf-8" />
