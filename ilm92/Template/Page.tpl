@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Issy les Moulineaux - Points d'intérêt - @Model.Fields.Titre</title>
+    <title>@Model.Fields.Titre</title>
     <link rel="icon" href="@icon">
 
     <meta charset="utf-8" />
