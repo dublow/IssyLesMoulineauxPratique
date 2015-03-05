@@ -21,7 +21,7 @@
     <h3>@Model.Fields.Description</h3>
     <p><b>Catégorie: </b> @string.Format("{0}/{1}/{2}", Model.Fields.Categorie1, Model.Fields.Categorie2, Model.Fields.Categorie3)</p>
     <address>
-        <b>Url de la page: </b> <a href="@Model.Fields.Url">@Model.Fields.Url</a><br>
+        <b>Url de la page: </b> <a href="@Model.Fields.ParsedUrl">@Model.Fields.Url</a><br>
         <b>Adresse Postale: </b> @Model.Fields.Adresse @Model.Fields.CodePostal @Model.Fields.Ville<br>
         @if (!string.IsNullOrEmpty(Model.Fields.Email)) {<b>Adresse Email: </b> <a href="mailto:@Model.Fields.Email">@Model.Fields.Email</a><br>}
         <b>Numéro de téléphone: </b> @Model.Fields.Telephone<br>

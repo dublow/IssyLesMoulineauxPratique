@@ -9,6 +9,7 @@ app.DescriptionView = Backbone.View.extend({
     
     render: function () {
         location.hash = this.model.titreHash;
+
         if (app.DescriptionViewTemplate)
             this.$el.html(app.DescriptionViewTemplate(this.model));
         else {
@@ -18,6 +19,7 @@ app.DescriptionView = Backbone.View.extend({
                 app.DescriptionViewTemplate = _.template($(result).html());
                 
                 that.$el.html(app.DescriptionViewTemplate(that.model));
+                
             });
         }
 

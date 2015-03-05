@@ -15,8 +15,11 @@ app.Router = {
                 return item.fields.titreHash === decodeURIComponent(action);
             });
 
-            if (itemModel)
+            if (itemModel) {
                 app.categoryView.renderRouter(itemModel);
+                document.title = itemModel.fields.titre;
+            }
+                
 
             console.log(action);
         });

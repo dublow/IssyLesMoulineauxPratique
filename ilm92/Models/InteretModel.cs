@@ -12,6 +12,11 @@ namespace ilm92.Models
 
     public class Fields
     {
+        private readonly Dictionary<string, string> NoWorking = new Dictionary<string, string>
+        {
+            {
+                "www.greenpressing.fr", "http://www.green-pressing.fr"
+            }}; 
         public string Adresse { get; set; }
         public string Categorie1 { get; set; }
         public string Categorie2 { get; set; }
@@ -25,7 +30,23 @@ namespace ilm92.Models
         public string Telephone { get; set; }
         public string Titre { get; set; }
         public string Url { get; set; }
+        public string ParsedUrl 
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Url) || Url.StartsWith("http"))
+                    return Url;
+
+                string url;
+                if (NoWorking.TryGetValue(Url, out url))
+                    return url;
+
+                return string.Format("http://{0}", Url);
+            }
+        }
         public string Ville { get; set; }
+
+
     }
 
 }
