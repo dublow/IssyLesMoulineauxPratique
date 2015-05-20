@@ -27,27 +27,26 @@ namespace ilm92.Attributes
                 return;
 
             var parts = request.QueryString[Fragment].Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            using (StreamReader streamReader = new StreamReader(filterContext.HttpContext.Server.MapPath("~/Jsons/ilm92.json")))
+
+            JArray interets = JArray.Parse(Helper.LoadInteret());
+
+            var result = (from item in interets
+                          where Helper.ReplaceParam((string)item["fields"]["titre"]) == parts[0]
+                          select item).FirstOrDefault();
+            if (result == null)
+                return;
+            var template = Helper.LoadTemplate(filterContext.HttpContext.Server.MapPath("~/Template/Page.tpl"));
+            var model = JsonConvert.DeserializeObject<InteretModel>(result.ToString());
+
+            var templateResult = Engine.Razor.RunCompile(template, "templateKey", typeof(InteretModel), model);
+
+            var contentResult = new ContentResult
             {
-                JArray interets = JArray.Parse(streamReader.ReadToEnd());
-
-                var result = (from item in interets
-                              where Helper.ReplaceParam((string)item["fields"]["titre"]) == parts[0]
-                              select item).FirstOrDefault();
-                if (result == null)
-                    return;
-                var template = Helper.LoadTemplate(filterContext.HttpContext.Server.MapPath("~/Template/Page.tpl"));
-                var model = JsonConvert.DeserializeObject<InteretModel>(result.ToString());
-
-                var templateResult = Engine.Razor.RunCompile(template, "templateKey", typeof(InteretModel), model);
-
-                var contentResult = new ContentResult{
-                    ContentType = "text/html",
-                    ContentEncoding = System.Text.Encoding.UTF8,
-                    Content = templateResult
-                };
-                filterContext.Result = contentResult;
-            }
+                ContentType = "text/html",
+                ContentEncoding = System.Text.Encoding.UTF8,
+                Content = templateResult
+            };
+            filterContext.Result = contentResult;
         }
     }
 

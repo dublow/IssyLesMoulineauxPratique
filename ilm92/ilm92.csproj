@@ -162,6 +162,7 @@
     <Content Include="Content\backbone.autocomplete.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\nprogress.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\metisMenu.css" />
@@ -251,12 +252,15 @@
     <Content Include="Scripts\metismenu.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.js" />
+    <Content Include="Scripts\nprogress.js" />
     <Content Include="Scripts\placeholder.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="sitemap.xml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

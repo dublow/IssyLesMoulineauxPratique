@@ -46,10 +46,23 @@ namespace ilm92.Commons
             return string.Join("", result.Split('-')).ToLower();
         }
 
+        public static string LoadInteret()
+        {
+            if (HttpContext.Current.Application["JsonInteret"] == null)
+            {
+                using (StreamReader streamReader = new StreamReader(HttpContext.Current.Server.MapPath("~/Jsons/ilm92.json")))
+                {
+                    HttpContext.Current.Application.Add("JsonInteret", streamReader.ReadToEnd());
+                }
+            }
+
+            return (string) HttpContext.Current.Application["JsonInteret"];
+        }
+
         public static ActionResult CreateSitemap(UrlHelper urlHelper, IEnumerable<string> urls)
         {
             var siteMapNodes = (from url in urls
-                                select new SimpleMvcSitemap.SitemapNode("http://dblw.fr/IssyInteret/#!" + url));
+                                select new SimpleMvcSitemap.SitemapNode("http://issyinteret.fr/#!" + url));
 
             return new SitemapProvider().CreateSitemap(new HttpContextWrapper(HttpContext.Current), siteMapNodes);
         }

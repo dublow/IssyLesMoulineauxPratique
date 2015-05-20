@@ -8,12 +8,12 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ilm92.Attributes;
 
 namespace ilm92.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
         {
             return View();
@@ -21,19 +21,12 @@ namespace ilm92.Controllers
 
         public JsonResult GetIlm92()
         {
-            using (StreamReader streamReader = new StreamReader(HttpContext.Server.MapPath("~/Jsons/ilm92.json")))
-            {
-                return Json(streamReader.ReadToEnd(), JsonRequestBehavior.AllowGet);
-                
-            }
-            return Json(null);
+            return Json(Helper.LoadInteret(), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetEventIlm92()
         {
             return Json(Helper.LoadJson("http://issy.com/ws/agenda/next/100"), JsonRequestBehavior.AllowGet);
         }
-
-        
     }
 }

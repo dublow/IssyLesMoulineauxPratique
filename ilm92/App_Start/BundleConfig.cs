@@ -22,7 +22,8 @@ namespace ilm92
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/underscore.js",
                         "~/Scripts/backbone.js",
-                        "~/Scripts/metismenu.js"));
+                        "~/Scripts/metismenu.js",
+                        "~/Scripts/nprogress.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
                         "~/Javascripts/router.js",
@@ -54,7 +55,8 @@ namespace ilm92
                         "~/Content/font-awesome.min.css",
                         "~/Content/metisMenu.css",
                         "~/Content/backbone.autocomplete.css",
-                        "~/Content/site.css"
+                        "~/Content/site.css",
+                        "~/Content/nprogress.css"
                         ));
         }
     }

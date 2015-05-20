@@ -1,6 +1,7 @@
 ﻿var app = app || {};
 
 $(function () {
+    NProgress.start();
     // Catégories
     $.get(app.urls.interets, function (model) {
         app.baseModel = JSON.parse(model);
@@ -18,13 +19,15 @@ $(function () {
         $('.sidebar-collapse .menu ul')
             .on('shown.bs.collapse', function () { app.changeForCollapseOn(window) })
             .on('hidden.bs.collapse', function () { app.changeForCollapseOff(window) });
+
+        NProgress.done();
     });
 
     // Evénements
-    $.get(app.urls.events, function (model) {
-        app.eventModel = _.groupBy(JSON.parse(model), function (item) {
-            return item.date_iso.substring(0, 10);
-        });
-        console.log(app.eventModel);
-    });
+    //$.get(app.urls.events, function (model) {
+    //    app.eventModel = _.groupBy(JSON.parse(model), function (item) {
+    //        return item.date_iso.substring(0, 10);
+    //    });
+    //    console.log(app.eventModel);
+    //});
 })
