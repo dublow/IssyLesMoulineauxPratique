@@ -14,8 +14,6 @@ namespace ilm92.Commons
 {
     public class Helper
     {
-        public static string IsProd { get { return ConfigurationManager.AppSettings["IsProd"]; } }
-
         public static string LoadJson(string url)
         { 
             if(string.IsNullOrEmpty(url))
@@ -80,7 +78,5 @@ namespace ilm92.Commons
 
             return value;
         }
-
-        
     }
 }

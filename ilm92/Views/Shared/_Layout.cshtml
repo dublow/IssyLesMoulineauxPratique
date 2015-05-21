@@ -3,7 +3,6 @@
     <head>
         @{
             var icon = "/Images/favicon.png";
-            
         }
         <title>Issy les Moulineaux - Points d'intérêt</title>
         <link rel="icon" href="@icon">
@@ -17,10 +16,10 @@
 
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        <script>
+            var isProd = '@ilm92.Configuration.IlmConfiguration.Current.IsProd.ToString().ToLower()' === 'true';
+        </script>
     </head>
-    <script>
-        var isProd =  '@ilm92.Commons.Helper.IsProd' === 'true';
-    </script>
 <body>
     <div id="fb-root"></div>
     @RenderBody()
@@ -30,64 +29,5 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEA1EfblRa9_D2mPMk3zRM-pa-w1DNeC4&sensor=false"></script>
 
     @RenderSection("scripts", required: false)
-
-    <!--GA-->
-    <script>
-        if (isProd) {
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-            ga('create', 'UA-41991114-3', 'auto');
-            ga('send', 'pageview');
-        }
-
-    </script>
-
-    <!--USERVOICE-->
-    <script>
-        if (isProd) {
-            // Include the UserVoice JavaScript SDK (only needed once on a page)
-            UserVoice = window.UserVoice || []; (function () { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = '//widget.uservoice.com/EFcBy5Tv96lTXDdsW6iLw.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s) })();
-
-            //
-            // UserVoice Javascript SDK developer documentation:
-            // https://www.uservoice.com/o/javascript-sdk
-            //
-
-            // Set colors
-            UserVoice.push(['set', {
-                accent_color: '#448dd6',
-                trigger_color: 'white',
-                trigger_background_color: 'rgba(46, 49, 51, 0.6)'
-            }]);
-
-            // Add default trigger to the bottom-right corner of the window:
-            UserVoice.push(['addTrigger', { mode: 'smartvote', trigger_position: 'top-right' }]);
-
-            // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
-            UserVoice.push(['autoprompt', {}]);
-        }
-        
-    </script>
-
-    <!--FB-->
-    <script>
-        (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=141588416036144&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-    <!--TW-->
-    <script>
-        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');
-    </script>
 </body>
 </html>

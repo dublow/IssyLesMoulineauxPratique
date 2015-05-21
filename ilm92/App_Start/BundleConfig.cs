@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using ilm92.Configuration;
 
 namespace ilm92
 {
@@ -8,6 +9,8 @@ namespace ilm92
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            var conf = IlmConfiguration.Current;
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -18,12 +21,24 @@ namespace ilm92
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
-                        "~/Scripts/bootstrap.min.js",
-                        "~/Scripts/underscore.js",
-                        "~/Scripts/backbone.js",
-                        "~/Scripts/metismenu.js",
-                        "~/Scripts/nprogress.js"));
+            var sBundle = new ScriptBundle("~/bundles/vendors");
+            sBundle.Include(
+                "~/Scripts/bootstrap.min.js",
+                "~/Scripts/underscore.js",
+                "~/Scripts/backbone.js",
+                "~/Scripts/metismenu.js",
+                "~/Scripts/nprogress.js");
+
+            if (conf.UseFb)
+                sBundle.Include("~/Scripts/widgetFb.js");
+            if(conf.UseTw)
+                sBundle.Include("~/Scripts/widgetTw.js");
+            if(conf.UseUv)
+                sBundle.Include("~/Scripts/widgetUv.js");
+            if (conf.UseGa)
+                sBundle.Include("~/Scripts/widgetGa.js");
+
+            bundles.Add(sBundle);
 
             bundles.Add(new ScriptBundle("~/bundles/page").Include(
                         "~/Javascripts/router.js",

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = null;
-    var icon = ilm92.Commons.Helper.IsProd == "true" ? "/IssyInteret/Images/favicon.png" : "/Images/favicon.png";
+    var icon = "/IssyInteret/Images/favicon.png";
 }
 <!DOCTYPE html>
 <html lang="fr">

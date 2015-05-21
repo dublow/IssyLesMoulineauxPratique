@@ -149,6 +149,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Attributes\AjaxCrawlableAttribute.cs" />
     <Compile Include="Commons\Helper.cs" />
+    <Compile Include="Configuration\IIlmConfiguration.cs" />
+    <Compile Include="Configuration\IlmConfiguration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,6 +258,10 @@
     <Content Include="Scripts\placeholder.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\widgetFb.js" />
+    <Content Include="Scripts\widgetGa.js" />
+    <Content Include="Scripts\widgetTw.js" />
+    <Content Include="Scripts\widgetUv.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="sitemap.xml" />
     <Content Include="Web.config">

@@ -22,6 +22,7 @@ app.Router = {
                 
 
             console.log(action);
+            NProgress.done();
         });
 
         Backbone.history.start();

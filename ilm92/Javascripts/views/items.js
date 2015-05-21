@@ -81,7 +81,7 @@ app.ItemsView = Backbone.View.extend({
 
             app.changeForMap(window);
         }
-        var element = model
+        var element = model;
         if (!element.description)
             element.description = '';
         if (!element.telephone)
